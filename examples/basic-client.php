@@ -17,3 +17,5 @@ $options = new Options([
 ]);
 
 $sdk = new Sdk($options);
+
+$response = $sdk->todos()->all();
