@@ -14,18 +14,26 @@
             "Api\\Client\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Api\\Client\\Tests\\": "tests"
+        }
+    },
     "require": {
+        "php": "^8",
         "php-http/client-common": "^2.7",
         "php-http/discovery": "^1.19",
         "psr/http-client": "^1.0",
         "psr/http-client-implementation": "^1.0",
         "psr/http-factory": "^1.0",
-        "symfony/http-client": "^6.3"
+        "symfony/http-client": "^6.3",
+        "symfony/options-resolver": "^6.3"
     },
     "require-dev": {
         "laminas/laminas-diactoros": "^3.2",
         "php-http/curl-client": "^2.3",
         "php-http/mock-client": "^1.6",
+        "phpunit/phpunit": "^10.4",
         "symfony/var-dumper": "^6.3"
     },
     "config": {
