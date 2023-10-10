@@ -15,7 +15,7 @@ use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
 final class ClientBuilder {
-
+    
     private ClientInterface $httpClient;
     
     private RequestFactoryInterface $requestFactoryInterface;
@@ -48,4 +48,3 @@ final class ClientBuilder {
         );
     }
 }
-
