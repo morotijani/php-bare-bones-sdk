@@ -8,19 +8,17 @@ use Api\Client\Endpoint\Todos;
 use Http\Client\Common\HttpMethodsClientInterface;
 use Http\Client\Common\Plugin\BaseUriPlugin;
 use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
-use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Message\UriFactory;
 
 final class Sdk {
+
     private ClientBuilder $clientBuilder;
 
-    public function __construct(ClientBuilder $clientBuilder = null, UriFactory $uriFactory = null) {
-        $this->clientBuilder = $clientBuilder ?: new ClientBuilder();
-        $uriFactory = $uriFactory ?: Psr17FactoryDiscovery::findUriFactory();
+    public function __construct(Options $options = null) {
 
-        $this->clientBuilder->addPlugin(
-            new BaseUriPlugin($uriFactory->createUri('https://jsonplaceholder.typicode.com'))
-        );
+        $options = $options ?? new Options();
+
+        $this->clientBuilder = $options->getClientBuilder();
+        $this->clientBuilder->addPlugin(new BaseUriPlugin($options->getUri()));
         $this->clientBuilder->addPlugin(
             new HeaderDefaultsPlugin(
                 [
@@ -31,7 +29,7 @@ final class Sdk {
             )
         );
     }
-    
+
     public function todos(): Todos {
         return new Endpoint\Todos($this);
     }
