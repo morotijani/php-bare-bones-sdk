@@ -25,6 +25,7 @@
     "require-dev": {
         "laminas/laminas-diactoros": "^3.2",
         "php-http/curl-client": "^2.3",
+        "php-http/mock-client": "^1.6",
         "symfony/var-dumper": "^6.3"
     },
     "config": {
